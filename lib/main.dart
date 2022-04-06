@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:goldmine/controllers/abroad_study_controller.dart';
 import 'package:goldmine/controllers/blog_controller.dart';
+import 'package:goldmine/controllers/college_controller.dart';
+import 'package:goldmine/controllers/services_controller.dart';
 import 'package:goldmine/controllers/study_in_controllers.dart';
 import 'package:goldmine/pages/home_page.dart';
 import 'package:goldmine/pages/splash_page.dart';
@@ -25,10 +27,14 @@ class MyApp extends StatelessWidget {
     Get.find<StudyInController>().getStudyInList();
     Get.find<AbroadStudyController>().getabroadStudyList();
     Get.find<BlogController>().getblogList();
+        Get.find<ServiceController>().getserviceList();
+        Get.find<CollegeController>().getcollegeList();
     return GetBuilder<AbroadStudyController>(builder: (_){
     return GetBuilder<StudyInController>(builder: (_){
       return GetBuilder<BlogController>(builder: (_){
-      return GetMaterialApp(
+      return GetBuilder<ServiceController>(builder: (_){
+        return GetBuilder<CollegeController>(builder: (_){
+          return GetMaterialApp(
       builder:(context, widget) => ResponsiveWrapper.builder(
           BouncingScrollWrapper.builder(context, widget!),
           maxWidth: 1200,
@@ -50,6 +56,8 @@ class MyApp extends StatelessWidget {
      initialRoute: RouteHelper.getSplashPage(),
       getPages: RouteHelper.routes,
     );
+        });
+      });
     });
   });
     });

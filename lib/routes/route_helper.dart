@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:goldmine/pages/home_page.dart';
 import 'package:goldmine/pages/recent/recent_details.dart';
 import 'package:goldmine/pages/recent/recent_post.dart';
+import 'package:goldmine/pages/services/service_page.dart';
 import 'package:goldmine/pages/sidebar_pages/about_us.dart';
 import 'package:goldmine/pages/sidebar_pages/terms_and_condition.dart';
 import 'package:goldmine/pages/splash_page.dart';
@@ -14,6 +15,7 @@ class RouteHelper{
   static const String blog="/blog";
   static const String termsPage="/terms-page";
   static const String aboutUs="/about-us";
+   static const String ourServices="/our_services";
 
   static String getSplashPage()=>'$splashPage';
   static String getStudyIn(int pageId)=>'$studyIn?pageId=$pageId';
@@ -21,6 +23,7 @@ class RouteHelper{
   static String getInitial()=>'$initial';
   static String getTermsPage()=>'$termsPage';
   static String getAboutUs()=>'$aboutUs';
+   static String getOurServices()=>'$ourServices';
 
   static List<GetPage> routes=[
 
@@ -53,6 +56,11 @@ class RouteHelper{
     // ),
     GetPage(name: aboutUs, page: (){
       return AboutUs();
+    },
+    transition: Transition.fadeIn
+    ),
+    GetPage(name: ourServices, page: (){
+      return OurServices();
     },
     transition: Transition.fadeIn
     ),
