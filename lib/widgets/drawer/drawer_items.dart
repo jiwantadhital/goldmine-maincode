@@ -51,7 +51,7 @@ class _DrawerWidgetState extends State<DrawerWidget> {
                 ),
                 SizedBox(height: 10,),
                DrawerList(icon: Icons.all_inbox_outlined,iconColor: Colors.red, text: "About Us",tap: (){Get.toNamed(RouteHelper.getAboutUs());},),
-                DrawerList(icon: Icons.favorite,text: "Our Service",iconColor: Colors.red,),
+                DrawerList(icon: Icons.favorite,text: "Our Service",iconColor: Colors.red,tap: (){Get.toNamed(RouteHelper.getOurServices());},),
                DrawerList(icon: Icons.system_security_update_good, text: "Terms and Condition",iconColor: Colors.red,tap: (){Get.toNamed(RouteHelper.getTermsPage());},),
               ],
             );

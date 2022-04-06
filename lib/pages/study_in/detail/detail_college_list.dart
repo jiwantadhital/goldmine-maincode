@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:goldmine/controllers/college_controller.dart';
+import 'package:goldmine/utils/app_constants.dart';
 import 'package:goldmine/widgets/texts/big_text.dart';
 import 'package:goldmine/widgets/texts/small_text.dart';
 
@@ -9,10 +12,11 @@ class DetailCollegeList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
                       children: [
-                        ListView.builder(
+                       GetBuilder<CollegeController>(builder: ((controller) {
+                         return controller.isLoaded? ListView.builder(
                       shrinkWrap: true,
                         physics: NeverScrollableScrollPhysics(),
-                        itemCount: 5,
+                        itemCount: controller.collegeList.length,
                         itemBuilder: (context,index){
                           return Container(
                             margin: EdgeInsets.only(left: 20,right: 20,bottom: 10),
@@ -32,7 +36,7 @@ class DetailCollegeList extends StatelessWidget {
                         image: DecorationImage(
                           fit: BoxFit.cover,
                           image: NetworkImage(
-                            "https://images.shiksha.com/mediadata/images/1515481785phpZsgL9D.png",
+                            AppConstants.MAIN_URL+controller.collegeList[index].image.toString(),
                           ),
                           ),
                       ),
@@ -49,9 +53,9 @@ class DetailCollegeList extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              BigText(text:"Holland",color: Colors.black,),
+                              BigText(text:controller.collegeList[index].name.toString(),color: Colors.black,),
                               SizedBox(height: 5,),
-                              SmallText(text: "Good one",color: Colors.black26,),
+                              SmallText(text: controller.collegeList[index].country.toString(),color: Colors.black26,),
                               SizedBox(height: 10,),
                               Row(
                     children: [
@@ -76,7 +80,8 @@ class DetailCollegeList extends StatelessWidget {
                               ),
                             ),
                           );
-                      }),
+                      }):CircularProgressIndicator();
+                       }))
                       ],
                     );
   }
